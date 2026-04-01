@@ -8,8 +8,13 @@ output_DIR = "output"
 Database_Name = "creditstream.db"
 Table_Name = "loans"
 
+# This function will extract data from the specified file path and return a DataFrame
 def extract_data(filepath):
-    pass 
+    print(f"[EXTRACT] Reading data from {filepath}...")
+    df = pd.read_csv(filepath)
+    print(f"[EXTRACT] Loaded {len(df):,} rows and {len(df.columns)} columns.")
+    
+    return df 
 
 def transform(df):
     pass
