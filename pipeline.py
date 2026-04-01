@@ -21,3 +21,8 @@ def summary(df):
     pass
 
 # Run The Pipeline
+def main():
+    pass
+
+if __name__ == "__main__":
+    main()
