@@ -1,5 +1,4 @@
 # CreditStream
-
 > A Python ETL pipeline that processes 50,000 real-world loan records, extracting raw CSV data, transforming it into clean structured data, and loading it into a SQLite database.
 
 ---
@@ -76,3 +75,7 @@ pip install -r requirements.txt
 ```
 python pipeline.py
 ```
+
+4. View the database
+   Open `output/creditstream.db` with **DB Browser for SQLite** or the
+   **SQLite Viewer** extension in VS Code to inspect the loaded data.
