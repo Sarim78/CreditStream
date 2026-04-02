@@ -68,14 +68,25 @@ def load_data(df, output_dir, database_name, table_name):
 # this function will print a summary of the processed data, including key statistics and breakdowns by risk tier and sector
 def summarize_data(df):
     print("\n── PIPELINE SUMMARY ──────────────────────────")
-    print(f"  Total loans      : {len(df):,}")
-    print(f"  Default rate     : {df['is_defaulted'].mean() * 100:.1f}%")
-    print(f"  Avg credit score : {df['credit_score'].mean():.0f}")
-    print(f"  Avg EL ratio     : {df['el_ratio'].mean():.4f}")
-    print(f"  Risk breakdown   :")
-    print(df["risk_tier"].value_counts().to_string())
+    print(f"\nTotal loans: {len(df):,}")
+    print(f"Default rate: {df['is_defaulted'].mean() * 100:.1f}%")
+    print(f"Avg credit score: {df['credit_score'].mean():.0f}")
+    print(f"Avg EL ratio: {df['el_ratio'].mean():.4f}")
+
+    print(f"\nRisk breakdown:")
+    print(f"{'Tier':<12} {'Count':>8}  {'Share':>7}")
+    print(f"{'-'*12} {'-'*8}  {'-'*7}")
+    for tier, count in df["risk_tier"].value_counts().items():
+        share = count / len(df) * 100
+        print(f"{tier:<12} {count:>8,}  {share:>6.1f}%")
+
     print(f"\nSector breakdown:")
-    print(df["sector"].value_counts().to_string())
+    print(f"{'Sector':<15} {'Count':>8}  {'Share':>7}")
+    print(f"{'-'*15} {'-'*8}  {'-'*7}")
+    for sector, count in df["sector"].value_counts().items():
+        share = count / len(df) * 100
+        print(f"{sector:<15} {count:>8,}  {share:>6.1f}%")
+
     print("──────────────────────────────────────────────\n")
 
 # Run The Pipeline
